@@ -1,19 +1,15 @@
 <?php
-$PASS = "Partiel2024!";
-// Récupère les infos de connexion depuis les vars d'environnement
-$host = getenv('DB_HOST') ?: 'mysql-partiel-guillaume.mysql.database.azure.com';
-$db   = getenv('DB_NAME') ?: 'partieldb';
-$user = getenv('DB_USER') ?: 'root@mysql-partiel-guillaume';
-$pass = getenv('DB_PASS') ?: $PASS;
+// Récupère la chaîne DSN stockée dans Azure Key Vault (via variable d'environnement)
+$dsn  = getenv("DATABASE_URL");
 
-// Monte la chaîne DSN complète, avec port et charset
-$dsn  = "mysql:host={$host};dbname={$db};port=3306;charset=utf8";
+// Login SQL Server
+$user = 'Yohann';
+$pass = 'Azerty123.';
 
 try {
-    // Instancie PDO
     $pdo = new PDO($dsn, $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "✅ Connexion réussie à MySQL avec PDO.";
+    echo "✅ Connexion réussie à Azure SQL Server avec PDO.";
 } catch (PDOException $e) {
     echo "❌ Erreur : " . $e->getMessage();
 }
