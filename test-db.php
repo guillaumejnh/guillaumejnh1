@@ -3,7 +3,7 @@ $PASS = "Partiel2024!";
 // Récupère les infos de connexion depuis les vars d'environnement
 $host = getenv('DB_HOST') ?: 'mysql-partiel-guillaume.mysql.database.azure.com';
 $db   = getenv('DB_NAME') ?: 'partieldb';
-$user = getenv('DB_USER') ?: 'root@mysql-partiel-guillaume';
+$user = getenv('DB_USER') ?: 'adminmysql@mysql-partiel-guillaume';
 $pass = getenv('DB_PASS') ?: $PASS;
 
 // Monte la chaîne DSN complète, avec port et charset
